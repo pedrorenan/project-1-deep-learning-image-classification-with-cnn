@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iron Hack - Bootcamp AI - Project 1</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .image-result {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    {% for filename, predictions in results %}
+    <div class="image-result">
+        <h2>Uploaded Image: {{ filename }}</h2>
+        <img src="{{ url_for('send_file', filename=filename) }}" alt="Uploaded Image" style="width:300px;">
+        
+        <h3>Predictions</h3>
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>Class Name</th>
+                <th>Probability</th>
+            </tr>
+            {% for i in range(10) %}
+            <tr>
+                <td>{{ i }}</td>
+                <td>{{ class_names[i] }}</td>
+                <td>{{ "%.2f" | format(predictions[0][i] * 100) }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+    
+    <a href="/">Upload more images</a>
+
+    <footer>
+        <p>Disclaimer: This is a deep learning focused app, layout is not a priority.</p>
+    </footer
+</body>
+</html>
