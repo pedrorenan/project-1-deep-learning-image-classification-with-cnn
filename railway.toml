@@ -1,3 +1,4 @@
 [build]
+
 builder = "DOCKERFILE"
-dockerfilePath = "solution/deploy/Dockerfile"
+dockerfilePath = "/solution/deploy/Dockerfile"
